@@ -1,10 +1,20 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 from flask import Flask, render_template, redirect, request, session, flash
 import pg
 import markdown
+import os
 from wiki_linkify import wiki_linkify
 
+
+
+db = pg.DB(
+    dbname=os.environ.get('PG_DBNAME'),
+    host=os.environ.get('PG_HOST'),
+    user=os.environ.get('PG_USERNAME'),
+    passwd=os.environ.get('PG_PASSWORD')
+)
 app =Flask('Wiki')
-db = pg.DB(dbname='Wiki')
 app.secret_key = 'best website'
 
 @app.route('/')
