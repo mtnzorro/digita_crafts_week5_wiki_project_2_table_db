@@ -68,6 +68,39 @@ def submit_edit_page(page_name):
     )
     return redirect('/%s'%page_name)
 
+@app.route('/AllPages')
+def render_all_pages():
+    query = db.query("select * from pages")
+    title_list = query.namedresult()
+    return render_template(
+        "all_pages.html",
+        title_list = title_list
+    )
+
+@app.route('/<page_name>/history')
+def history_pages(page_name):
+    query = db.query("select id from pages where title = '%s'" %page_name)
+    pages_id = query.namedresult()[0].id
+    page_history = db.query("select * from history where pages_id = '%d' order by date_saved desc" %pages_id).namedresult()
+    return render_template(
+        "page_history.html",
+        page_history = page_history,
+        page_name = page_name
+    )
+
+@app.route('/<page_name>/history_page', methods=['POST'])
+def render_history_page(page_name):
+        history_id = int(request.form.get('id'))
+        print history_id
+        print "BOOOOOOOOOOOM"
+        history_content = db.query("select content from history where id = '%d' order by date_saved desc" %history_id).namedresult()[0].content
+        history_content = wiki_linkify(history_content)
+        history_content = markdown.markdown(history_content)
+        return render_template(
+            'history_page.html',
+            page_name = page_name,
+            history_content = history_content
+        )
 
 if __name__ == '__main__':
     app.run(debug = True)

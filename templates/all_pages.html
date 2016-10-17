@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h4>All current pages:</h4>
+<table border="1" width="100%">
+<tr>
+<th>Page Name</th>
+<th>Link</th>
+</tr>
+{% for title in title_list %}
+<tr>
+<td>{{title.title}}</td>
+<td><a href="/{{title.title}}">View Page</a></td>
+
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h4>Revision history of current page:</h4>
+<table border="1" width="100%">
+<tr>
+<th>Date</th>
+<th>Link</th>
+</tr>
+{% for page in page_history %}
+<tr>
+<td>{{page.date_saved}}</td>
+<td>
+  <form class="history" action="/{{page_name}}/history_page" method="post">
+  <input type="hidden" name="id" value="{{page.id}}">
+  <button type="submit" name="button">View Page</button>
+  </form>
+  </td>
+
+
+</tr>
+{% endfor %}
+</table>
+<a href="/{{page_name}}">Return to current version of the page</a> 
+{% endblock %}

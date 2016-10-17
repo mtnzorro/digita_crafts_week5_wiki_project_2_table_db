@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<p>
+  {{history_content | safe}}
+</p>
+
+<a href="/{{page_name}}/history">Return to this page's history.</a><br>
+<a href="/{{page_name}}">Return to current version of this page</a>
+{% endblock %}
