@@ -2,7 +2,7 @@
 {%block body%}
 <h2>Edit the page below:</h2>
 <form class="edit_box" action="/{{page_name}}/save" method="post">
-<textarea name="edits" rows="20" cols="80" ></textarea><br>
+<textarea name="edits" rows="20" cols="80" >{{newest_content}}</textarea><br>
 <button type="submit" name="button">Submit Edits</button>
 </form>
 {%endblock%}

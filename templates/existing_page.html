@@ -2,7 +2,7 @@
 {% block body %}
 
 <p>
-  {{newest_content}}
+  {{newest_content | safe}}
 </p>
 
 <a href="/{{page_name}}/edit">Edit this page.</a>
