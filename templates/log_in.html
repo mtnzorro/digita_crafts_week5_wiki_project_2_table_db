@@ -1,0 +1,11 @@
+{%extends "layout.html"%}
+{%block body%}
+<h2>Log In:</h2>
+<form class="login_box" action="/login/submit" method="post">
+<input type="name" name="username" placeholder="Type username here"><br>
+<input type="name" name="password" placeholder="Type password here"><br>
+<button type="submit" name="button">Log in</button>
+</form>
+<a href="/new_user">Create New User</a><br>
+<a href="/AllPages">View All Pages</a>
+{%endblock%}

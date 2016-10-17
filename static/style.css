@@ -1,0 +1,8 @@
+.login{
+  display: block;
+  text-align: right;
+}
+
+button, input, optgroup, select, textarea{
+  color: black;
+}
