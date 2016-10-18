@@ -19,19 +19,28 @@
       </ul>
     <div class="panel panel-default">
   <div class="panel-body">
-  <a href="/AllPages"><h3>Jason's Amazing Wiki</h3></a>
+    <div class="search">
+  <a href="/AllPages"><h3>Jason's Amazing Wiki</h3></a><br>
+  <h3>Search for a page</h3><br>
+  <form class="page_lookup" action="/page_lookup" method="post">
+    <input type="search" name="page_name" placeholder="Enter page name">
+    <button type="submit" name="button">Search</button>
+  </form>
+    </div>
     <div class="login">
         <h4>Welcome</h4>
     <p>Hello, {{session['username'] or 'there'}}!!</p>
     <p>
-      <a href="/login">Log In</a>
-      <a href="/logout">Log Out</a>
+      <a href="/login" class="btn btn-primary btn-xs">Log In</a>
+      <a href="/logout" class="btn btn-primary btn-xs">Log Out</a>
     </p>
   </div>
   </div>
 </div>
 
-<h1>{{page_name}}</h1>
+<h1>{{page_name}}</h1><br>
+
+
     {% block body %}
     {% endblock %}
   </body>

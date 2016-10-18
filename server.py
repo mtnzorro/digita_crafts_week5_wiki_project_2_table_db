@@ -131,6 +131,7 @@ def render_input():
 
 @app.route('/login/submit', methods=['POST'])
 def submit_log_in():
+
     username = request.form.get('username')
     password = request.form.get('password')
     query = db.query("select * from users where username = '%s'" % username)
@@ -140,7 +141,7 @@ def submit_log_in():
         if user.password == password:
             session['username'] = user.username
             flash('You have successfully logged in')
-            return redirect('/page_name')
+            return redirect("/")
         else:
             return redirect('/login')
     else:
@@ -174,6 +175,13 @@ def logout():
     del session['username']
     flash('You have successfully logged out')
     return redirect('/login')
+
+@app.route('/page_lookup', methods=['POST'])
+def submit_page_lookup():
+    page_name = request.form.get('page_name')
+    return redirect('/%s'%page_name)
+
+
 
 if __name__ == '__main__':
     app.run(debug = True)

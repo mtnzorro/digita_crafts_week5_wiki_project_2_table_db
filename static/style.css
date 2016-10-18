@@ -1,8 +1,13 @@
 .login{
   display: block;
-  text-align: right;
+float:  right;
+clear: both;
 }
 
 button, input, optgroup, select, textarea{
   color: black;
+}
+
+.search {
+  display: inline-block;
 }
