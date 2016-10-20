@@ -6,8 +6,6 @@ import markdown
 import os
 from wiki_linkify import wiki_linkify
 
-
-
 db = pg.DB(
     dbname=os.environ.get('PG_DBNAME'),
     host=os.environ.get('PG_HOST'),
